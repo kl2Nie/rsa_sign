@@ -8,10 +8,10 @@
         router
         >
           <el-menu-item index="/">
-            签名
+            文件签名
           </el-menu-item>
           <el-menu-item index="/verify">
-            验证
+            签名验证
           </el-menu-item>
         </el-menu>
       </el-header>
