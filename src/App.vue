@@ -39,4 +39,8 @@
   color: #2c3e50;
 }
 
+#input{
+    width: 450px;
+}
+
 </style>
