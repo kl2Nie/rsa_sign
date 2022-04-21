@@ -1,9 +1,10 @@
 <template>
   <el-upload
-    class="upload-demo"
+    class="upload"
     drag
     action=""
     multiple
+    limit="1"
   >
     <el-icon class="el-icon--upload"><upload-filled /></el-icon>
     <div class="el-upload__text">
