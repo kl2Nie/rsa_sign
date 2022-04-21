@@ -1,6 +1,8 @@
 <template>
   <div class="button">
-    <el-button  type="primary">验证签名</el-button>
+    <el-button  type="primary">
+        验证签名
+    </el-button>
   </div>
 </template>
 

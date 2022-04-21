@@ -1,6 +1,8 @@
 <template>
   <div class="button">
-    <el-button  type="primary">文件签名</el-button>
+    <el-button  type="primary">
+        文件签名
+    </el-button>
   </div>
 </template>
 
