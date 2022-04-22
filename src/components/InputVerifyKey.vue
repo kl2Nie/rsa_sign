@@ -1,4 +1,5 @@
 <template>
+<div>
   <el-input
     class="input"
     v-model="textarea"
@@ -6,6 +7,7 @@
     type="textarea"
     placeholder="请输入公钥，以-----BEGIN PUBLIC KEY-----开头，以-----END PUBLIC KEY-----结尾"
   />
+</div>
 </template>
 
 <script setup>

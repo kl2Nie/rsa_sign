@@ -1,11 +1,13 @@
 <template>
+<div>
   <el-input
     class="input"
     v-model="textarea"
-    :rows="10"
+    :rows="2"
     type="textarea"
-    placeholder="请输入私钥，以-----BEGIN PRIVATE KEY-----开头，以-----END PRIVATE KEY-----结尾"
+    placeholder="请输入文件的签名"
   />
+</div>
 </template>
 
 <script setup>
@@ -16,5 +18,6 @@ const textarea = ref('')
 <style scoped>
 .input{
     width: 450px;
+    margin-top:10px;
 }
 </style>

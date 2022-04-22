@@ -7,7 +7,7 @@
   >
     <el-icon class="el-icon--upload"><upload-filled /></el-icon>
     <div class="el-upload__text">
-      将文件拖到此处，或<em>点击选择</em>
+      将待验证的文件拖到此处，或<em>点击选择</em>
     </div>
     <template #tip>
       <div class="el-upload__tip">

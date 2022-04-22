@@ -1,22 +1,25 @@
 <template>
   <div class="verify">
     <FileUploadVerify />
-    <InputVerify />
+    <InputVerifyKey />
+    <InputVerifySignDate />
     <ButtonVerify />
   </div>
 </template>
 
 <script>
 import FileUploadVerify from '@/components/FileUploadVerify.vue'
-import InputVerify from '@/components/InputVerify.vue'
+import InputVerifyKey from '@/components/InputVerifyKey.vue'
 import ButtonVerify from '@/components/ButtonVerify.vue'
+import InputVerifySignDate from '@/components/InputVerifySignDate.vue'
 
 export default {
   name: 'VerifyView',
   components: {
     FileUploadVerify,
-    InputVerify,
-    ButtonVerify
+    InputVerifyKey,
+    ButtonVerify,
+    InputVerifySignDate
 }
 }
 
