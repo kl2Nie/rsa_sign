@@ -22,11 +22,7 @@
         <div>
           <span>Copyright &copy; 2022 - {{ new Date().getFullYear() }} kl2Nie</span>
           RSA数字签名使用
-          <el-link 
-          :underline="false" 
-          href="https://github.com/kl2Nie/rsa_sign/blob/master/LICENSE" 
-          type="primary"
-          >
+          <el-link :underline="false" href="https://github.com/kl2Nie/rsa_sign/blob/master/LICENSE" type="primary">
           MIT许可协议
           </el-link>
           开放源代码
