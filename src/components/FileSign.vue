@@ -19,8 +19,8 @@
   </div>
 
   <div>
-    <el-input class="inputkey" v-model="textarea" :rows="10" type="textarea"
-      placeholder="请输入私钥，以-----BEGIN PRIVATE KEY-----开头，以-----END PRIVATE KEY-----结尾" />
+    <el-input class="inputkey" v-model="priKey" :rows="10" type="textarea"
+      placeholder="请输入私钥，以-----BEGIN PRIVATE KEY-----开头，以-----END PRIVATE KEY-----结尾" clearable />
   </div>
 
   <div class="button">
@@ -34,7 +34,7 @@
 <script setup>
 import { UploadFilled } from '@element-plus/icons-vue'
 import { ref } from 'vue'
-const textarea = ref('')
+const priKey = ref('')
 </script>
 
 <script >
@@ -47,7 +47,7 @@ export default {
       signmd5: "****",
     };
   },
-
+//未支持分片
   methods: {
     onSignChange: function (file) {
       var _this = this;

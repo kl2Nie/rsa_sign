@@ -19,12 +19,12 @@
   </div>
 
   <div>
-    <el-input class="inputkey" v-model="textarea" :rows="10" type="textarea"
+    <el-input class="inputkey" v-model="pubKey" :rows="10" type="textarea"
       placeholder="请输入公钥，以-----BEGIN PUBLIC KEY-----开头，以-----END PUBLIC KEY-----结尾" />
   </div>
 
   <div>
-    <el-input class="inputsign" v-model="textarea" :rows="2" type="textarea"
+    <el-input class="inputsign" v-model="fileSign" :rows="2" type="textarea"
       placeholder="请输入签名" />
   </div>
 
@@ -39,7 +39,8 @@
 <script setup>
 import { UploadFilled } from '@element-plus/icons-vue'
 import { ref } from 'vue'
-const textarea = ref('')
+const pubKey = ref('')
+const fileSign = ref('')
 </script>
 
 <script >
