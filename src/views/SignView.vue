@@ -1,23 +1,17 @@
 <template>
   <div class="sign">
-    <FileUploadSign />
-    <InputSignKey />
-    <ButtonSign />
+    <FileSign />
   </div>
 </template>
 
 <script>
-import FileUploadSign from '@/components/FileUploadSign.vue'
-import InputSignKey from '@/components/InputSignKey.vue'
-import ButtonSign from '@/components/ButtonSign.vue'
+import FileSign from '@/components/FileSign.vue'
 
 export default {
   name: 'SignView',
   components: {
-    FileUploadSign,
-    InputSignKey,
-    ButtonSign,
-}
+    FileSign
+  }
 }
 
 </script>
