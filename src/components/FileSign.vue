@@ -67,7 +67,7 @@ export default {
         //将值传到date
         _this.fileMD5 = fileMD5;
         //调试
-        console.log(fileMD5)
+        //console.log(fileMD5)
       }
     },
 
@@ -84,8 +84,8 @@ export default {
       let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
       saveAs(str, 'sign.txt');
       //调试
-      console.log(signature);
-      console.log(privkey);
+      // console.log(signature);
+      // console.log(privkey);
     },
 
 

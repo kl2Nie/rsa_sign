@@ -82,10 +82,10 @@ export default {
       verify.setPublicKey(pubkey);
       let verified = verify.verify(md5v, signature, CryptoJS.SHA256);
       //调试
-      console.log(md5v);
-      console.log(pubkey);
-      console.log(verified);
-      console.log(signature);
+      // console.log(md5v);
+      // console.log(pubkey);
+      // console.log(verified);
+      // console.log(signature);
       if (verified) {
         alert('It works!!!');
       }
