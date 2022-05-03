@@ -1,7 +1,7 @@
 <template>
   <!-- 上传文件 -->
   <div>
-    <el-upload drag :limit="1" :on-change="onSignChange" :show-file-list="true" :auto-upload="false" action="0">
+    <el-upload drag :limit="1" :on-change="onSignChange" :show-file-list="false" :auto-upload="false" action="0">
       <el-icon class="el-icon--upload">
         <upload-filled />
       </el-icon>
@@ -29,12 +29,17 @@
       文件签名
     </el-button>
   </div>
+  <div>
+    <el-input class="inputkey" v-model="signature" :rows="4" type="textarea" placeholder="当文件签名完成后会在此处显示签名值"
+      clearable />
+  </div>
 </template>
 
 <script setup>
 import { UploadFilled } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 const privateKey = ref('')
+const signature = ref('')
 
 </script>
 
@@ -49,25 +54,31 @@ export default {
   data() {
     return {
       fileMD5: '',
-      privateKey: '0',
+      privateKey: '',
+      filename: '',
+      signature: '',
     };
   },
 
   methods: {
+    //计算MD5值
     onSignChange(file) {
-      //计算文件MD5值，未分片大文件较慢
       let _this = this;
+      //获取文件名，可将签名作为文件导出
+      let filename = file.name;
       let fileReader = new FileReader();
+      //获取文件二进制值
       let dataFile = file.raw;
       let spark = new SparkMD5.ArrayBuffer();
       fileReader.readAsArrayBuffer(dataFile)
       fileReader.onload = function (e) {
         spark.append(e.target.result);
         let fileMD5 = spark.end()
-        //将值传到date
         _this.fileMD5 = fileMD5;
+        _this.filename = filename;
         //调试
-        //console.log(fileMD5)
+        console.log(filename)//在控制台打印文件名
+        console.log(fileMD5)//在控制台打印文件MD5值
       }
     },
 
@@ -80,17 +91,16 @@ export default {
       sign.setPrivateKey(privkey);
       let signature = sign.sign(md5v, CryptoJS.SHA256, "sha256");
       //将签名值保存到sign.txt文件
+      let name = this.filename
       let data = signature;
       let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
-      saveAs(str, 'sign.txt');
+      saveAs(str, String(name) + '.txt');
+      this.signature = signature;
       //调试
-      // console.log(signature);
-      // console.log(privkey);
+      //console.log(signature);
+      //console.log(privkey);
     },
-
-
   }
-
 };
 </script>
 

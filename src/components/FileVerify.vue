@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-upload drag :limit="1" :on-change="onVerifyChange" :show-file-list="true" :auto-upload="false" action="0">
+    <el-upload drag :limit="1" :on-change="onVerifyChange" :show-file-list="false" :auto-upload="false" action="0">
       <el-icon class="el-icon--upload">
         <upload-filled />
       </el-icon>
@@ -82,15 +82,16 @@ export default {
       verify.setPublicKey(pubkey);
       let verified = verify.verify(md5v, signature, CryptoJS.SHA256);
       //调试
-      // console.log(md5v);
-      // console.log(pubkey);
-      // console.log(verified);
-      // console.log(signature);
+      console.log(md5v);
+      console.log(pubkey);
+      console.log(verified);
+      console.log(signature);
+
       if (verified) {
-        alert('It works!!!');
+        alert('验证成功');
       }
       else {
-        alert('Something went wrong....');
+        alert('验证失败');
       }
     }
 

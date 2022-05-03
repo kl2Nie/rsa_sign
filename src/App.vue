@@ -2,16 +2,15 @@
   <div class="app">
     <el-container>
       <el-header>
-        <el-menu  
-        class="el-menu" 
-        mode="horizontal" 
-        router
-        >
+        <el-menu class="el-menu" mode="horizontal" router>
           <el-menu-item index="/">
             文件签名
           </el-menu-item>
           <el-menu-item index="/verify">
             签名验证
+          </el-menu-item>
+          <el-menu-item index="/genkey">
+            生成RSA密钥对
           </el-menu-item>
         </el-menu>
       </el-header>
@@ -23,7 +22,7 @@
           <span>Copyright &copy; 2022 - {{ new Date().getFullYear() }} kl2Nie</span>
           RSA数字签名使用
           <el-link :underline="false" href="https://github.com/kl2Nie/rsa_sign/blob/master/LICENSE" type="primary">
-          MIT许可协议
+            MIT许可协议
           </el-link>
           开放源代码
         </div>
@@ -40,5 +39,4 @@
   text-align: center;
   color: #2c3e50;
 }
-
 </style>
