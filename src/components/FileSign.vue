@@ -20,18 +20,18 @@
   </div>
   <!-- 输入私钥 -->
   <div>
-    <el-input class="inputkey" v-model="privateKey" :rows="10" type="textarea"
+    <el-input class="inputkey" v-model="privateKey" :rows="8" type="textarea"
       placeholder="请输入私钥，以-----BEGIN PRIVATE KEY-----开头，以-----END PRIVATE KEY-----结尾" clearable />
+  </div>
+  <div>
+    <el-input class="inputkey" v-model="signature" :rows="2" type="textarea" placeholder="当文件签名完成后会在此处显示,无需填入内容"
+      clearable />
   </div>
   <!-- 提交 -->
   <div class="button">
     <el-button type="primary" @click="signFile">
       文件签名
     </el-button>
-  </div>
-  <div>
-    <el-input class="inputkey" v-model="signature" :rows="4" type="textarea" placeholder="当文件签名完成后会在此处显示签名值"
-      clearable />
   </div>
 </template>
 
@@ -77,8 +77,8 @@ export default {
         _this.fileMD5 = fileMD5;
         _this.filename = filename;
         //调试
-        console.log(filename)//在控制台打印文件名
-        console.log(fileMD5)//在控制台打印文件MD5值
+        // console.log(filename)//在控制台打印文件名
+        // console.log(fileMD5)//在控制台打印文件MD5值
       }
     },
 
@@ -93,9 +93,15 @@ export default {
       //将签名值保存到sign.txt文件
       let name = this.filename
       let data = signature;
-      let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
-      saveAs(str, String(name) + '.txt');
-      this.signature = signature;
+      if (signature == false) {
+        alert('请输入完整内容');
+      }
+      else {
+        let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
+        saveAs(str, String(name) + '.txt');
+        this.signature = signature;
+      }
+
       //调试
       //console.log(signature);
       //console.log(privkey);

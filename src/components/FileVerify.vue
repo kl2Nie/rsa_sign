@@ -19,7 +19,7 @@
   </div>
 
   <div>
-    <el-input class="inputkey" v-model="publicKey" :rows="10" type="textarea"
+    <el-input class="inputkey" v-model="publicKey" :rows="8" type="textarea"
       placeholder="请输入公钥，以-----BEGIN PUBLIC KEY-----开头，以-----END PUBLIC KEY-----结尾" />
   </div>
 
@@ -82,10 +82,10 @@ export default {
       verify.setPublicKey(pubkey);
       let verified = verify.verify(md5v, signature, CryptoJS.SHA256);
       //调试
-      console.log(md5v);
-      console.log(pubkey);
-      console.log(verified);
-      console.log(signature);
+      // console.log(md5v);
+      // console.log(pubkey);
+      // console.log(verified);
+      // console.log(signature);
 
       if (verified) {
         alert('验证成功');
