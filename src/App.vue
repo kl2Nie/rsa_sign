@@ -10,7 +10,7 @@
             签名验证
           </el-menu-item>
           <el-menu-item index="/genkey">
-            生成RSA密钥对
+            生成密钥对
           </el-menu-item>
         </el-menu>
       </el-header>
@@ -30,6 +30,7 @@
     </el-container>
   </div>
 </template>
+
 
 <style>
 #app {
