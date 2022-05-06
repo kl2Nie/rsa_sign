@@ -18,6 +18,18 @@
         <router-view />
       </el-main>
       <el-footer>
+        <!-- <div>
+          <span>本项目有可直接在本地运行的版本</span>
+          可直接
+          <el-link :underline="false"
+            href="https://github.com/kl2Nie/kl2Nie.github.io/releases/download/v1.1/RSA_Sign_v1.1.7z" type="primary">
+            下载
+          </el-link>
+          如果对项目感兴趣可
+          <el-link :underline="false" href="https://github.com/kl2Nie/kl2Nie.github.io/releases" type="primary">
+            访问发布页
+          </el-link>
+        </div> -->
         <div>
           <span>Copyright &copy; 2022 - {{ new Date().getFullYear() }} kl2Nie</span>
           RSA数字签名使用
