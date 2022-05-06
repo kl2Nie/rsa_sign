@@ -29,75 +29,68 @@
       文件签名
     </el-button>
   </div>
+  <!-- 签名 -->
+  <div>
+    <el-input class="inputkey" v-model="signv" :rows="2" type="textarea" placeholder="此处将填入签名值" clearable />
+  </div>
+
 </template>
 
 <script setup>
-import { UploadFilled } from '@element-plus/icons-vue'
-import { ref } from 'vue'
-const privateKey = ref('')
-
-</script>
-
-<script>
 import SparkMD5 from 'spark-md5'
 import JSEncrypt from 'jsencrypt'
 import CryptoJS from 'crypto-js'
 import { saveAs } from 'file-saver'
+import { UploadFilled } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
-export default {
+const privateKey = ref('')
+const fileMD5 = ref('')
+const filename = ref('')
+const signv = ref('')
 
-  data() {
-    return {
-      fileMD5: '',
-      privateKey: '',
-      filename: '',
-    };
-  },
-
-  methods: {
-    //计算MD5值
-    onSignChange(file) {
-      let _this = this;
-      //获取文件名，可将签名作为文件导出
-      let filename = file.name;
-      let fileReader = new FileReader();
-      //获取文件二进制值
-      let dataFile = file.raw;
-      let spark = new SparkMD5.ArrayBuffer();
-      fileReader.readAsArrayBuffer(dataFile)
-      fileReader.onload = function (e) {
-        spark.append(e.target.result);
-        let fileMD5 = spark.end()
-        _this.fileMD5 = fileMD5;
-        _this.filename = filename;
-        //调试
-        // console.log(filename)//在控制台打印文件名
-        // console.log(fileMD5)//在控制台打印文件MD5值
-      }
-    },
-
-    signFile() {
-      //导入数据
-      let md5v = this.fileMD5;//文件MD5值
-      console.log(md5v)
-      let privkey = this.privateKey;//导入私钥
-      console.log(privkey)
-      //开始验证
-      let sign = new JSEncrypt();
-      sign.setPrivateKey(privkey);
-      let signature = sign.sign(md5v, CryptoJS.SHA256, "sha256");
-      //将签名值保存到sign.txt文件
-      let name = this.filename
-      let data = signature;
-      let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
-      saveAs(str, String(name) + '.txt');
-      //调试
-      //console.log(signature);
-      //console.log(privkey);
-    },
+function onSignChange(file) {
+  //获取文件名，可将签名作为文件导出
+  filename.value = file.name;
+  let fileReader = new FileReader();
+  //获取文件二进制值
+  let dataFile = file.raw;
+  let spark = new SparkMD5.ArrayBuffer();
+  fileReader.readAsArrayBuffer(dataFile)
+  fileReader.onload = function (e) {
+    spark.append(e.target.result);
+    let md5 = spark.end()
+    fileMD5.value = md5;
+    //调试
+    // console.log(filename)//在控制台打印文件名
+    // console.log(fileMD5)//在控制台打印文件MD5值
   }
-};
+}
+function signFile() {
+  //导入数据
+  let md5v = fileMD5.value;//文件MD5值
+  console.log(md5v)
+  let privkey = privateKey.value;//导入私钥
+  //调试
+  //console.log(privkey)
+  //开始验证
+  let sign = new JSEncrypt();
+  sign.setPrivateKey(privkey);
+  let signature = sign.sign(md5v, CryptoJS.SHA256, "sha256");
+  //将签名值保存到sign.txt文件
+  signv.value = signature;
+
+  let name = filename.value
+  let data = signature;
+  let str = new Blob([data], { type: 'text/plain;charset=utf-8' });
+  saveAs(str, String(name) + '.txt');
+  //调试
+  //console.log(signature);
+  //console.log(privkey);
+}
+
 </script>
+
 
 <style scoped>
 .inputkey {
