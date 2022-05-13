@@ -76,7 +76,7 @@ function signFile() {
   //开始验证
   let sign = new JSEncrypt();
   sign.setPrivateKey(privkey);
-  let signature = sign.sign(md5v, CryptoJS.SHA256, "sha256");
+  let signature = sign.sign(md5v, CryptoJS.MD5, "md5");
   //将签名值保存到sign.txt文件
   signv.value = signature;
 

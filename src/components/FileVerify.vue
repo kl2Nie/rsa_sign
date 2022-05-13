@@ -68,7 +68,7 @@ function verifyFile() {
   //开始验证
   let verify = new JSEncrypt();
   verify.setPublicKey(pubkey);
-  let verified = verify.verify(md5v, signature, CryptoJS.SHA256);
+  let verified = verify.verify(md5v, signature, CryptoJS.MD5);
   //调试
   console.log(md5v);
   console.log(pubkey);
